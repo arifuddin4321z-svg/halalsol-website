@@ -1,53 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HalalSOL Token</title>
-<style>
-    body {
-        background: #0a0f24;
-        color: white;
-        font-family: Arial;
-        text-align: center;
-        padding: 40px;
+  <meta charset="UTF-8" />
+  <title>HalalSOL – The Pure Islamic Meme Movement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="HalalSOL ($HALAL) is an Islamic-themed meme movement on Solana – faith, fun and community. Not financial or religious advice." />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    body{background:#050816;color:#f9fafb;line-height:1.6}
+    a{color:#facc6b;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;width:92%;margin:0 auto}
+    header{position:sticky;top:0;z-index:40;background:rgba(5,8,22,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(148,163,184,.4)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
+    .logo-wrap{display:flex;align-items:center;gap:.6rem}
+    .logo-circle{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 20%,#facc6b,#b7791f);display:flex;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(250,204,21,.7)}
+    .logo-crescent{width:18px;height:18px;border-radius:50%;background:#fff7d6;box-shadow:8px 0 0 0 #050816}
+    .logo-text-top{font-size:.95rem;font-weight:700}
+    .logo-text-bottom{font-size:.72rem;opacity:.75}
+    .nav-links{display:flex;gap:1rem;font-size:.86rem}
+    .btn-main{border:none;border-radius:999px;padding:.45rem 1.1rem;background:linear-gradient(135deg,#facc6b,#f97316);color:#111827;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 8px 22px rgba(248,181,52,.55)}
+    main{padding-bottom:3rem}
+    section{padding:3rem 0}
+    #hero{padding-top:2.2rem}
+    .hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:center}
+    .hero-title{font-size:clamp(2.1rem,3vw+1rem,3rem);font-weight:800;margin-bottom:.7rem}
+    .hero-title span{color:#facc6b}
+    .hero-sub{font-size:1rem;max-width:520px;opacity:.9;margin-bottom:1.1rem}
+    .hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+    .badge{font-size:.72rem;border-radius:999px;border:1px solid rgba(248,181,52,.6);padding:.18rem .65rem;text-transform:uppercase;letter-spacing:.06em;opacity:.9}
+    .hero-meta{font-size:.85rem;opacity:.85}
+    .hero-meta strong{color:#facc6b}
+    .hero-buttons{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
+    .btn-secondary{border-radius:999px;border:1px solid rgba(148,163,184,.7);padding:.45rem 1rem;font-size:.82rem;background:transparent;color:#e5e7eb}
+    .hero-card{border-radius:18px;background:radial-gradient(circle at top,#111827,#020617);border:1px solid rgba(148,163,184,.45);padding:1.3rem;box-shadow:0 18px 40px rgba(0,0,0,.75)}
+    .hero-card-title{display:flex;justify-content:space-between;align-items:center;font-size:.95rem;font-weight:600;margin-bottom:.4rem}
+    .hero-card-sub{font-size:.83rem;opacity:.82;margin-bottom:.9rem}
+    .hero-row{display:flex;justify-content:space-between;font-size:.83rem;margin-bottom:.35rem}
+    .hero-row span:first-child{opacity:.7}
+    .pill{display:inline-block;font-size:.75rem;border-radius:999px;border:1px solid rgba(248,181,52,.5);padding:.18rem .65rem;margin-top:.4rem;opacity:.9}
+    h2.section-title{font-size:1.65rem;font-weight:800;margin-bottom:.4rem}
+    .section-sub{font-size:.93rem;opacity:.87;max-width:620px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-top:1.4rem}
+    .card{border-radius:16px;background:rgba(15,23,42,.96);border:1px solid rgba(148,163,184,.4);padding:1.1rem 1.3rem}
+    .card h3{font-size:1.02rem;margin-bottom:.35rem}
+    .card p{font-size:.9rem;opacity:.9}
+    .list{font-size:.86rem;margin-top:.5rem}
+    .list li{margin-bottom:.3rem}
+    .highlight{color:#facc6b;font-weight:600}
+    .roadmap{border-left:2px solid rgba(148,163,184,.6);margin-top:1.3rem;padding-left:1rem}
+    .rm-step{margin-bottom:1rem}
+    .rm-title{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
+    .rm-body{font-size:.86rem;opacity:.9}
+    .steps{margin-top:1.2rem;font-size:.87rem}
+    .steps li{margin-bottom:.4rem}
+    .buy-box{margin-top:1.3rem;font-size:.86rem;opacity:.9}
+    .community-links{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem}
+    .btn-outline{border-radius:999px;border:1px solid rgba(148,163,184,.8);padding:.4rem .9rem;font-size:.84rem;display:inline-flex;gap:.35rem;align-items:center}
+    .faq{margin-top:1.3rem;display:grid;gap:.8rem}
+    .faq-item{border-radius:12px;border:1px solid rgba(148,163,184,.45);background:rgba(15,23,42,.95);padding:.7rem .9rem}
+    .faq-q{font-size:.9rem;font-weight:600;margin-bottom:.18rem}
+    .faq-a{font-size:.85rem;opacity:.9}
+    footer{border-top:1px solid rgba(55,65,81,.8);padding:1.4rem 0 2.1rem;text-align:center;font-size:.8rem;opacity:.82}
+    @media(max-width:830px){
+      .hero-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      section{padding:2.3rem 0}
+      #hero{padding-top:1.4rem}
+      .grid-2{grid-template-columns:1fr}
     }
-    h1 {
-        color: #ffd700;
-        font-size: 40px;
-    }
-    .box {
-        background: #111a3a;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 30px;
-    }
-    a {
-        color: #00d9ff;
-        font-weight: bold;
-    }
-</style>
+  </style>
 </head>
 <body>
 
-<h1>🌙 HalalSOL – $HALAL</h1>
-<p>The Pure Islamic Meme Movement on Solana</p>
+<header>
+  <div class="container nav">
+    <div class="logo-wrap">
+      <div class="logo-circle"><div class="logo-crescent"></div></div>
+      <div>
+        <div class="logo-text-top">HalalSOL</div>
+        <div class="logo-text-bottom">The Pure Islamic Meme Movement</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#why">Why Halal?</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#buy">How to Buy</a>
+      <a href="#community">Community</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="https://twitter.com/HalalSOL_Token" target="_blank">
+      <button class="btn-main">Follow on X</button>
+    </a>
+  </div>
+</header>
 
-<div class="box">
-    <h2>About HalalSOL</h2>
-    <p>HalalSOL is a faith-based Islamic meme token focused on positivity, unity and community growth.</p>
-</div>
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badges">
+          <span class="badge">Solana</span>
+          <span class="badge">$HALAL</span>
+          <span class="badge">Community-Driven</span>
+        </div>
+        <h1 class="hero-title">
+          HalalSOL 🌙 <span>Faith · Fun · Community</span>
+        </h1>
+        <p class="hero-sub">
+          HalalSOL ($HALAL) is an Islamic-themed meme movement on Solana —
+          focused on clean vibes, honest culture and a community that doesn’t
+          need toxic hype to have fun.
+        </p>
+        <p class="hero-meta">
+          <strong>Important:</strong> HalalSOL is a meme/community token.
+          It is <strong>not</strong> financial advice, not an investment
+          contract and not a religious fatwa. Always do your own research.
+        </p>
+        <div class="hero-buttons">
+          <a href="#buy"><button class="btn-main">How to Buy</button></a>
+          <a href="#community"><button class="btn-secondary">Join Community</button></a>
+        </div>
+      </div>
+      <div>
+        <div class="hero-card">
+          <div class="hero-card-title">
+            <span>Token Snapshot</span>
+            <span style="font-size:.8rem;opacity:.7;">$HALAL</span>
+          </div>
+          <div class="hero-card-sub">
+            Core: <span class="highlight">faith, fairness, fun &amp; transparency</span>.
+          </div>
+          <div class="hero-row">
+            <span>Chain</span><span>Solana</span>
+          </div>
+          <div class="hero-row">
+            <span>Ticker</span><span>$HALAL</span>
+          </div>
+          <div class="hero-row">
+            <span>Total Supply</span><span>1,000,000,000</span>
+          </div>
+          <div class="hero-row">
+            <span>Buy/Sell Tax</span><span>0% / 0%</span>
+          </div>
+          <div class="hero-row">
+            <span>Contract</span><span style="opacity:.75;">coming soon</span>
+          </div>
+          <p class="pill">Dexscreener · Solscan links will be added after launch</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="box">
-    <h2>Join Us</h2>
-    <p>Twitter: <a href="https://twitter.com/HalalSOL_Token" target="_blank">@HalalSOL_Token</a></p>
-</div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About HalalSOL</h2>
+      <p class="section-sub">
+        HalalSOL is a culture-first meme token for people who love faith and
+        good vibes but are tired of rugs, scams and toxic behaviour. It’s a
+        simple Solana token with a focus on <span class="highlight">adab,
+        honesty and community</span>.
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Mission 🌙</h3>
+          <p>
+            Build a clean, respectful space where Muslims (and anyone who
+            respects these values) can enjoy crypto memes without feeling like
+            they must compromise on ethics.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Vision 🤲</h3>
+          <p>
+            A global Crescent Army that uses memes, reminders and creative
+            projects to spread positivity — on-chain and off-chain — while
+            understanding that this is <strong>not</strong> a guaranteed
+            investment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="box">
-    <h2>Official Links</h2>
-    <p>Website: halalsol</p>
-    <p>More coming soon...</p>
-</div>
+  <!-- WHY HALAL -->
+  <section id="why">
+    <div class="container">
+      <h2 class="section-title">Why “Halal” in HalalSOL?</h2>
+      <p class="section-sub">
+        Halal here is about <span class="highlight">clean behaviour and
+        intention</span> – not a promise that the token is a certified
+        sharia-compliant investment.
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Clean Culture</h3>
+          <ul class="list">
+            <li>• No dev mint games after launch</li>
+            <li>• No hidden taxes or blacklist traps</li>
+            <li>• No fake “guaranteed 100x” marketing</li>
+            <li>• Respectful, family-friendly memes</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Honest Communication</h3>
+          <ul class="list">
+            <li>• Clear about risks</li>
+            <li>• Clear that this is memes + community only</li>
+            <li>• Clear that nothing here is a fatwa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOKENOMICS -->
+  <section id="tokenomics">
+    <div class="container">
+      <h2 class="section-title">Tokenomics</h2>
+      <p class="section-sub">
+        Straightforward meme token structure. No strange rules, no confusing
+        math – just a basic SPL token on Solana.
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Supply</h3>
+          <ul class="list">
+            <li>• Total supply: <span class="highlight">1,000,000,000 HALAL</span></li>
+            <li>• Buy tax: 0%</li>
+            <li>• Sell tax: 0%</li>
+            <li>• Mint authority: planned to be renounced after launch</li>
+            <li>• Freeze authority: planned to be removed</li>
+          </ul>
+          <p style="font-size:.8rem;opacity:.85;margin-top:.5rem;">
+            Exact token address and links will be added once the token is
+            deployed on mainnet.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Basic Safety Approach</h3>
+          <ul class="list">
+            <li>• Simple contract with no special tricks</li>
+            <li>• LP and important wallets shared publicly</li>
+            <li>• Community kept updated on any changes</li>
+          </ul>
+          <p style="font-size:.78rem;opacity:.85;margin-top:.5rem;">
+            <strong>Note:</strong> Even with these steps, crypto remains
+            high-risk. DYOR and never use money you can’t afford to lose.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap">
+    <div class="container">
+      <h2 class="section-title">Roadmap</h2>
+      <p class="section-sub">
+        No crazy promises. Just a simple plan that grows if the community
+        actually shows up, inshaAllah.
+      </p>
+      <div class="roadmap">
+        <div class="rm-step">
+          <div class="rm-title">Phase 1 – Launch & Foundation</div>
+          <div class="rm-body">
+            • Token deployment on Solana<br/>
+            • Website, logo & branding<br/>
+            • X (Twitter) and Telegram opening<br/>
+            • Contract & LP details shared publicly
+          </div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-title">Phase 2 – Community Building</div>
+          <div class="rm-body">
+            • Daily Islamic reminders & memes<br/>
+            • Community contests & simple giveaways<br/>
+            • Collaborations with ethical creators<br/>
+            • Holder milestones & shout-outs
+          </div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-title">Phase 3 – Experiments & Extras</div>
+          <div class="rm-body">
+            • Simple crescent-themed NFTs (maybe)<br/>
+            • Merch ideas if community wants<br/>
+            • Possible charity integrations if practical<br/>
+            • Tools/resources that benefit the wider ummah
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO BUY -->
+  <section id="buy">
+    <div class="container">
+      <h2 class="section-title">How to Buy (after launch)</h2>
+      <p class="section-sub">
+        This is a generic example flow for buying any Solana meme token. Exact
+        links will be added once $HALAL is live.
+      </p>
+      <ol class="steps">
+        <li>1. Download a Solana wallet (Phantom, Solflare, etc.).</li>
+        <li>2. Buy some SOL on an exchange (Binance, etc.) and send to your wallet.</li>
+        <li>3. Open a DEX (like Jupiter or Raydium) using your wallet.</li>
+        <li>4. Paste the official <span class="highlight">$HALAL token address</span> (once announced).</li>
+        <li>5. Swap SOL → HALAL. Double-check the address before every trade.</li>
+      </ol>
+      <div class="buy-box">
+        <strong>⚠ Always verify:</strong> contract address, official links and
+        community channels. Scammers may create fake copies.
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="community">
+    <div class="container">
+      <h2 class="section-title">Join the Crescent Army</h2>
+      <p class="section-sub">
+        The contract is just code. The real project is
+        <span class="highlight">you</span> – the people who decide to keep the
+        vibe halal, kind and fun.
+      </p>
+      <div class="community-links">
+        <a class="btn-outline" href="https://twitter.com/HalalSOL_Token" target="_blank">🐦 Follow on X (Twitter)</a>
+        <a class="btn-outline" href="#" target="_blank">💬 Join Telegram (coming soon)</a>
+        <a class="btn-outline" href="#" target="_blank">📈 Dexscreener (after launch)</a>
+        <a class="btn-outline" href="#" target="_blank">🔍 Solscan (after launch)</a>
+      </div>
+      <p style="font-size:.86rem;opacity:.88;margin-top:1rem;">
+        Ways to help: like & share posts, create memes, invite friends and
+        always keep the adab and respect high.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      <p class="section-sub">
+        A few important clarifications so nobody gets confused.
+      </p>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-q">Is HalalSOL an officially certified halal investment?</div>
+          <div class="faq-a">
+            No. HalalSOL is an Islamic-themed meme/community token. It does not
+            claim to be a certified sharia-compliant investment or a fatwa-backed
+            product. It is mainly cultural and community-focused.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is this financial or religious advice?</div>
+          <div class="faq-a">
+            No. Nothing on this site or in the community is financial, legal or
+            religious advice. Crypto is high-risk. Always do your own research and
+            consult qualified scholars or professionals if needed.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Who controls the token?</div>
+          <div class="faq-a">
+            The goal is to minimise unnecessary central control (e.g. renouncing
+            mint authority, removing freeze authority) and let the community help
+            guide the future direction, as long as the vibe stays halal and clean.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> HalalSOL. Community-driven meme movement on Solana.</p>
+    <p style="margin-top:.35rem;">This website is for educational &amp; entertainment purposes only. Not financial or religious advice.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
-</html>
+      </html>
